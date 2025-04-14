@@ -1,1 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
+<div class="container">
+    <div class="column" id="todo-column" data-column="todo">
+        <h2>TODO</h2>
+        <button class="add-button" data-column="todo">Добавить задачу</button>
+        <div class="notes-container" id="todo-notes">
+            <!-- Заметки TODO будут здесь -->
+        </div>
+    </div>
+
+    <div class="column" id="doing-column" data-column="doing">
+        <h2>В процессе</h2>
+        <button class="add-button" data-column="doing">Добавить задачу</button>
+        <div class="notes-container" id="doing-notes">
+            <!-- Заметки В процессе будут здесь -->
+        </div>
+    </div>
+
+    <div class="column" id="done-column" data-column="done">
+        <h2>Выполнено</h2>
+        <button class="add-button" data-column="done">Добавить задачу</button>
+        <div class="notes-container" id="done-notes">
+            <!-- Заметки Выполнено будут здесь -->
+        </div>
+    </div>
+</div>
+
+<div id="edit-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <textarea id="edit-textarea"></textarea>
+        <button id="save-button">Сохранить</button>
+    </div>
+</div>
+
+<script src="todo-list.js"></script>
+</body>
+</html>
