@@ -24,7 +24,7 @@ body {
 }
 
 .add-button {
-    background-color: #ff0000;
+    background-color: #1bff00;
     color: white;
     padding: 10px 15px;
     border: none;
@@ -35,7 +35,7 @@ body {
 }
 
 .add-button:hover {
-    background-color: #ff0000;
+    background-color: #1bff00;
 }
 
 .note {
