@@ -77,11 +77,42 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     // Модальное окно редактирования
-    function openEditModal(note, text) {
-        editingNote = note;
-        editTextArea.value = text;
-        editModal.style.display = 'block';
-    }
+    // ... (Остальной код вашего todo-list.js)
+
+    const addNoteModal = document.getElementById('add-note-modal');
+    const addNoteTextArea = document.getElementById('add-note-textarea');
+    const addNoteButton = document.getElementById('add-note-button');
+    const addNoteCloseButton = document.getElementById('add-note-close');
+
+    addButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const columnId = this.dataset.column;
+            addNoteModal.style.display = 'block'; // Показываем диалог
+
+            addNoteButton.onclick = () => { // Обработчик для кнопки "Добавить" в диалоге
+                const newNoteText = addNoteTextArea.value; // Получаем текст из textarea
+                if (newNoteText) {
+                    const note = createNote(newNoteText, columnId);
+                    document.getElementById(`${columnId}-notes`).appendChild(note);
+                    saveData(); // Сохраняем данные
+                }
+                addNoteModal.style.display = 'none'; // Скрываем диалог
+                addNoteTextArea.value = ''; // Очищаем textarea
+            };
+
+            addNoteCloseButton.onclick = () => { // Обработчик для кнопки "Закрыть"
+                addNoteModal.style.display = 'none'; // Скрываем диалог
+                addNoteTextArea.value = ''; // Очищаем textarea
+            };
+        });
+    });
+
+    window.addEventListener('click', (event) => { // Закрытие диалога при клике вне его
+        if (event.target === addNoteModal) {
+            addNoteModal.style.display = 'none';
+            addNoteTextArea.value = ''; // Очищаем textarea
+        }
+    });
 
     closeButton.addEventListener('click', () => {
         editModal.style.display = 'none';
