@@ -1,37 +1,45 @@
+:root {
+    --primary-color: #29ABE2;
+    --secondary-color: #F2F2F2;
+    --text-color: #333333;
+    --accent-color: #FFC107;
+}
 body {
-    font-family: sans-serif;
-    margin: 0;
-    background-color: #f4f4f4;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
 }
 
 .container {
     display: flex;
-    justify-content: space-around;
-    padding: 20px;
+    justify-content: space-between; /* Равномерное распределение колонок */
+    align-items: flex-start; /* Выравнивание колонок по верхнему краю */
+    padding: 30px;
 }
 
 .column {
-    width: 300px;
-    background-color: #fff;
-    border-radius: 5px;
-    padding: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 0 15px;
+}
 }
 
-.column h2 {
-    text-align: center;
-    margin-bottom: 15px;
+.column {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.column:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .add-button {
-    background-color: #1bff00;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.note {
+    transition: transform 0.2s ease;
+}
+
+.note:hover {
+    transform: translateY(-2px); /* Небольшое смещение вверх при наведении */
 }
 
 .add-button:hover {
@@ -49,6 +57,14 @@ body {
 
 .note:active {
     cursor: grabbing; /*  меняем курсор во время перетаскивания */
+}
+
+.column, .note, .add-button {
+    border-radius: 8px;
+}
+
+.note {
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .note p {
@@ -104,6 +120,16 @@ body {
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
+}
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Колонки располагаются вертикально на маленьких экранах */
+    }
+
+    .column {
+        width: 100%;
+        margin: 15px 0;
+    }
 }
 
 .close-button:hover,
