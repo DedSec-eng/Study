@@ -1,77 +1,76 @@
-:root {
-    --primary-color: #29ABE2;
-    --secondary-color: #F2F2F2;
-    --text-color: #333333;
-    --accent-color: #FFC107;
-}
+/* Общие стили */
 body {
-    background-color: var(--secondary-color);
-    color: var(--text-color);
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background-color: #f7f7f7;
+    color: #333;
+    line-height: 1.6;
 }
 
 .container {
     display: flex;
-    justify-content: space-between; /* Равномерное распределение колонок */
-    align-items: flex-start; /* Выравнивание колонок по верхнему краю */
-    padding: 30px;
+    justify-content: space-around;
+    padding: 20px;
 }
 
 .column {
-    margin: 0 15px;
-}
-}
-
-.column {
+    width: 300px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
 }
 
-.column:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+.column h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #444;
 }
 
+/* Кнопка добавления */
 .add-button {
+    background-color: #5cb85c; /* Зеленый цвет */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
     transition: background-color 0.3s ease;
 }
 
-.note {
-    transition: transform 0.2s ease;
-}
-
-.note:hover {
-    transform: translateY(-2px); /* Небольшое смещение вверх при наведении */
-}
-
 .add-button:hover {
-    background-color: #1bff00;
+    background-color: #449d44; /* Более темный зеленый при наведении */
 }
 
+/* Карточка заметки */
 .note {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 5px;
     padding: 10px;
     margin-bottom: 10px;
-    cursor: grab; /*  меняем курсор при наведении */
+    cursor: grab;
+    transition: transform 0.2s ease;
 }
 
 .note:active {
-    cursor: grabbing; /*  меняем курсор во время перетаскивания */
+    cursor: grabbing;
 }
 
-.column, .note, .add-button {
-    border-radius: 8px;
-}
-
-.note {
-    border: 1px solid rgba(0, 0, 0, 0.1);
+.note:hover {
+    transform: translateY(-3px); /* Эффект поднятия при наведении */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .note p {
     margin: 0;
-    word-break: break-word; /* Предотвращает выход длинных слов за границы */
+    word-break: break-word;
+    color: #555;
 }
 
+/* Кнопки внутри заметки */
 .note-buttons {
     display: flex;
     justify-content: space-between;
@@ -84,31 +83,33 @@ body {
     padding: 5px 8px;
     border-radius: 3px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .note-buttons button:hover {
     background-color: #ccc;
 }
 
+/* Модальное окно */
 .modal {
-    display: none; /* Скрыто по умолчанию */
-    position: fixed; /* Остается на месте при прокрутке */
-    z-index: 1; /* Сидит поверх других элементов */
+    display: none;
+    position: fixed;
+    z-index: 1;
     left: 0;
     top: 0;
-    width: 100%; /* Полная ширина */
-    height: 100%; /* Полная высота */
-    overflow: auto; /* Включить прокрутку при необходимости */
-    background-color: rgba(0,0,0,0.4); /* Черный с прозрачностью */
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto; /* 15% сверху и по центру */
+    margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Может быть изменено */
-    border-radius: 5px;
+    width: 80%;
+    border-radius: 10px;
     position: relative;
 }
 
@@ -120,16 +121,6 @@ body {
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
-}
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column; /* Колонки располагаются вертикально на маленьких экранах */
-    }
-
-    .column {
-        width: 100%;
-        margin: 15px 0;
-    }
 }
 
 .close-button:hover,
@@ -143,9 +134,21 @@ body {
     width: 100%;
     height: 150px;
     padding: 10px;
-    box-sizing: border-box; /*  Важно:  включает padding и border в ширину/высоту */
+    box-sizing: border-box;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    resize: vertical; /* Разрешить вертикальное изменение размера */
+    resize: vertical;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .column {
+        width: 100%;
+        margin: 10px 0;
+    }
 }
